@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <title>Generate Resume</title>
+</head>
+<body>
+    <div class="container" id="resume-form">
+        <h1 class="text-center my-2">Resume Builder</h1><br>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- First column -->
+                 <h3>Personal Information</h3>
+                 <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter here"/>
+                 </div>
+
+                 <div class="form-group mt-2">
+                    <label for="contact">Your Contact</label>
+                    <input type="text" id="contact" class="form-control" placeholder="Enter here"/>
+                 </div>
+
+                 <div class="form-group mt-2">
+                    <label for="address">Your Address</label>
+                    <textarea id="address" class="form-control" placeholder="Enter here" rows="5"></textarea>
+                 </div>
+
+                 <p class="text-secondary my-3">Important Links</p>
+                 <div class="form-group mt-2">
+                    <label for="fb">Facebook URL</label>
+                    <input type="text" id="fb" class="form-control" placeholder="Enter here">
+                 </div>
+
+                 <div class="form-group mt-2">
+                    <label for="ig">Instagram URL</label>
+                    <input type="text" id="ig" class="form-control" placeholder="Enter here">
+                 </div>
+
+                 <div class="form-group mt-2">
+                    <label for="linke">LinkedIn URL</label>
+                    <input type="text" id="linke" class="form-control" placeholder="Enter here">
+                 </div>
+                 <div class="form-group mt-2">
+                    <label for="profile-pic">Upload Profile Picture</label>
+                    <input type="file" id="profile-pic" class="form-control" accept="image/*">
+                 </div>
+
+            </div>
+            <div class="col-md-6">
+                <!-- Second column -->
+                <h3>Professional Information</h3>
+                 <div class="form-group mt-2">
+                    <label for="obj">Objective</label>
+                    <textarea id="obj" class="form-control" placeholder="Enter here" rows="5"></textarea>
+                </div>
+
+                <div class="form-group mt-2" id="wem">
+                    <label for="">Work Experience</label>
+                    <textarea class="form-control we" placeholder="Enter here" rows="3"></textarea>
+                    <!-- New area added here -->
+                    <div class="container text-center mt-3" id="wenew">
+                        <button onclick="addnewwe()" class="btn btn-primary btn-sm">Add New</button>
+                    </div>
+                </div>
+
+                <div class="form-group mt-2" id="aqm">
+                    <label for="aq">Academic Qualification</label>
+                    <textarea class="form-control aq" placeholder="Enter here" rows="3"></textarea>
+                    <!-- New area added here -->
+                    <div class="container text-center mt-3" id="aqnew">
+                        <button onclick="addnewaq()" class="btn btn-primary btn-sm">Add New</button>
+                    </div>
+                </div>
+
+                <div class="container mt-5">
+                    <label for="type">Choose resume type: </label>
+                    <select id="op">
+                        <option value="basic">Basic</option>
+                        <option value="template">Template</option>
+                    </select>
+                </div>
+
+
+            </div>
+            <div class="conntainer text-center mt-3">
+                <button onclick="preview()" class="btn btn-primary btn-lg">Preview Resume</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="resume-basic">
+        <div class="row">
+            <!-- Personal Information -->
+            <img id="profile-img-basic" src="https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png" align="right" class="myimg" />
+            <div class="container">
+                    <p><b>Name: </b></p>
+                    <p id="namet"></p>
+                    <p><b>Contact: </b></p>
+                    <p id="contactt"></p>
+                    <p><b>Address: </b></p>
+                    <p id="addresst"></p>
+
+                    <hr/>
+
+            </div>
+
+            <!-- Professional Info -->
+                  <!-- Objective -->
+                  <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Objective</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="objt"></p>
+                    </div>
+                  </div>
+                  <!-- Work Experience -->
+                  <div class="card mt-4">
+                    <div class="card-header ">
+                        <h3>Work Experience</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="wet">
+                            <li></li>
+                        </ul>
+                    </div>
+                  </div>
+                  <!-- Academic Qualification -->
+                  <div class="card mt-4">
+                    <div class="card-header ">
+                        <h3>Academic Qualification</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="aqt">
+                            <li></li>
+                        </ul>
+                    </div>
+                  </div>
+
+                  <!-- Important Links -->
+                   
+                   <h3>Important Links</h3><hr>
+                <p>Facebook :- <a id="fbt" href="#1"> </a></p>
+                <p>Instagram :- <a id="igt" href="#2"> </a></p>
+                <p>LinkedIn :- <a id="linket" href="#3"> </a></p>
+
+                <div class="container">
+                    <button onclick="save()" class="btn background mt-5">Save Resume</button>
+                  </div>
+
+        </div>
+    </div>
+
+    <div class="container" id="resume-template">
+        <div class="row">
+            <div class="col-md-4 text-center py-5 background">
+                <!-- Personal Info -->
+                 <img id="profile-img-template" src="https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png" class="img-fluid myimg" />
+                 <div class="container">
+                    <p id="namet1"></p>
+                    <p id="contactt1"></p>
+                    <p id="addresst1"></p>
+
+                    <hr/>
+
+                    <p>Facebook :- <a id="fbt1" href="#1"> </a></p>
+                    <p>Instagram :- <a id="igt1" href="#2"> </a></p>
+                    <p>LinkedIn :- <a id="linket1" href="#3"> </a></p>
+                 </div>
+            </div>
+            <div class="col-md-8 py-5">
+                 <h1 id="name2t1" class="text-center" style="font-weight: 980;"></h1>
+
+                 <!-- Professional Info -->
+                  <!-- Objective -->
+                  <div class="card mt-4">
+                    <div class="card-header background">
+                        <h3>Objective</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="objt1"></p>
+                    </div>
+                  </div>
+                  <!-- Work Experience -->
+                  <div class="card mt-4">
+                    <div class="card-header background">
+                        <h3>Work Experience</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="wet1">
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, officiis?</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, officiis?</li>
+                        </ul>
+                    </div>
+                  </div>
+                  <!-- Academic Qualification -->
+                  <div class="card mt-4">
+                    <div class="card-header background">
+                        <h3>Academic Qualification</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="aqt1">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <button onclick="save()" class="btn background mt-5">Save Resume</button>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Script files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

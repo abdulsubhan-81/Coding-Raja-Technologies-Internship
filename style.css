@@ -1,0 +1,22 @@
+/* #resume-form{
+    display: none;
+}
+  */
+
+ #resume-template{
+    display: none;
+ }
+
+ #resume-basic{
+    display: none;
+ } 
+
+.myimg{
+    border-radius: 50%;
+    width: 230px;
+    height: 200px;
+}
+
+.background{
+    background-color: aqua;
+}
